@@ -44,5 +44,7 @@ module App
                        routing_specs: false
       g.factory_bot false
     end
+
+    config.time_zone = 'Tokyo'
   end
 end
