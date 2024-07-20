@@ -43,6 +43,8 @@ group :development, :test do
   gem 'rubocop-performance', require: false # 追加
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
