@@ -8,6 +8,12 @@ ja:
         activated: メール認証フラグ
         admin: 管理者フラグ
     errors:
+      models:
+        user:
+          attributes:
+            password:
+              format: "%{attribute}%{message}"
+              invalid: は半角英数字・ハイフン・アンダーバーで入力してください
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
