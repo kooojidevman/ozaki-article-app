@@ -48,6 +48,9 @@ group :development, :test do
   gem 'rubocop-performance', require: false # 追加
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
 end
 
 group :development do
