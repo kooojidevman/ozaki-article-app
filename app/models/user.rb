@@ -21,4 +21,14 @@ class User < ApplicationRecord
   # + create時の必須バリデーション自動追加
   # + authenticate(文字列) <- パスワードが一致しているか確認できる
   has_secure_password
+
+  validates :name, presence: true, length: { maximum: 30, allow_blank: true }
+  validates :email, presence: true, length: { maximum: 255, allow_blank: true }
+  # passwordのバリデーション:
+  # + 先頭の文字が「a-zA-Z_-」になっている(\A[\w\-])
+  # + 必ず1文字以上繰り返す(+)
+  # + 文字列の末尾に一致(\z)
+  validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A[\w\-]+\z/, allow_blank: true }, allow_nil: true
+  validates :is_activated, inclusion: { in: [true, false] }
+  validates :is_admin, inclusion: { in: [true, false] }
 end
