@@ -51,7 +51,7 @@ module App
 
     config.i18n.default_locale = :ja
 
-    # $LOAD_PATHにautoload_pathを追加しない
+    # $LOAD_PATHにautoload_pathを追加しない(ファイル探索量を減らしrequireなどの処理を高速化)
     config.add_autoload_paths_to_load_path = false
   end
 end
