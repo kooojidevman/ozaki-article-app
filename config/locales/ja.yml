@@ -1,6 +1,12 @@
----
 ja:
   activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        activated: メール認証フラグ
+        admin: 管理者フラグ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
