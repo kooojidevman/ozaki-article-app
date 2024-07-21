@@ -50,5 +50,8 @@ module App
     config.active_record.default_timezone = :local
 
     config.i18n.default_locale = :ja
+
+    # $LOAD_PATHにautoload_pathを追加しない
+    config.add_autoload_paths_to_load_path = false
   end
 end
