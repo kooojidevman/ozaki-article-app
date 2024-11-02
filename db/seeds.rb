@@ -1,23 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 # db/seeds.rb
 
-# Creating sample todos
-Todo.create([
-              { title: 'Learn Ruby on Rails', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Build a todo list app', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Deploy the app to Heroku', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Write tests for the app', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Refactor code', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Update documentation', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Learn new Rails features', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Clean up the database', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Optimize app performance', is_done: false, created_at: Time.now, updated_at: Time.now },
-              { title: 'Prepare for presentation', is_done: false, created_at: Time.now, updated_at: Time.now }
-            ])
+# ライブラリを追加
+require 'faker'
+
+# ユーザーデータの作成
+5.times do |i|
+  user = User.create!(
+    name: "user_#{i + 1}",
+    email: "user_#{i + 1}@example.com",
+    password: 'password',            # テスト用の固定パスワード
+    password_confirmation: 'password',
+    is_activated: true               # 仮に全員アクティベート済みに
+  )
+
+  # ユーザーごとに投稿を3件作成
+  3.times do |i|
+    Post.create!(
+      user: user,
+      content: "#{user.name}が投稿したよ。~part#{i + 1}~"
+    )
+  end
+end
+
+puts "Seed data has been created successfully."
