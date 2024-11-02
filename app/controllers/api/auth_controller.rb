@@ -35,4 +35,11 @@ class Api::AuthController < ApplicationController
   def generate_token(user)
     JWT.encode({ user_id: user.id }, Rails.application.credentials.jwt_secret_key, 'HS256')
   end
+
+  def authenticate_user
+    token = request.headers['Authorization']&.split(' ')&.last
+    decoded_token = JWT.decode(token, Rails.application.credentials.jwt_secret_key, true, algorithm: 'HS256') rescue nil
+    @current_user = User.find_by(id: decoded_token[0]['user_id']) if decoded_token
+    render json: { error: '認証が必要です' }, status: :unauthorized unless @current_user
+  end
 end
