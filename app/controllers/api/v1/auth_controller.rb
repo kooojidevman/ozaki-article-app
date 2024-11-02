@@ -1,4 +1,4 @@
-class Api::AuthController < ApplicationController
+class Api::V1::AuthController < ApplicationController
   require 'jwt'
 
   # ユーザー登録
